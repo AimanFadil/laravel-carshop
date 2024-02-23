@@ -13,7 +13,7 @@ class StoreCarRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,39 @@ class StoreCarRequest extends FormRequest
      */
     public function rules()
     {
+
         return [
-            //
+            'casa_automobilistica' => 'required',
+            'modello' => 'required|max:30',
+            'prezzo' => 'required|min:3',
+            'alimentazione' => 'required|max:20',
+            'anno' => 'required',
+            'numero_telaio' => 'required|max:20|unique:cars',
+            'trazione' => 'max:20',
+            'carrozzeria' => 'max:20',
+            'cavalli' => 'required',
+            'cilindrata' => 'required',
+
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'casa_automobilistica.required' => 'La casa automibilistica è obbligatorria',
+            'modello.required' => 'Il modello è obbligatorio',
+            'modello.max' => 'Il modello può essere composto da massimo 30 caratteri',
+            'prezzo.required' => 'Il prezzo è obbligatorio',
+            'prezzo.min' => 'Il prezzo minimo è di 100 euro',
+            'alimentazione.required' => 'L\'alimentazione è obbligatoria',
+            'alimentazione.max' => 'L\'alimentazione può essere composta da un massimo di 20 caratteri ',
+            'anno.required' => 'Inserire l\'anno',
+            'numero_telaio.required' => 'Inserire il numero di telaio',
+            'numero_telaio.max' => 'Il numero di telaio devecontenere al massimo 20 caretteri',
+            'numero_telaio.unique' => 'Il numero ditelaio deve essere unico, il seguente numero è già presente',
+            'trazione.max' => 'Il tipo di trazione è composto da un massimo di 20  caratteri',
+            'carrozzeria.max' => 'Il tipo di carrozzeria consente un inserimento di massimo 20 caratteri',
+            'cavalli.required' => 'Inserire il numerodi cavalli',
+            'cilindrata.required' => 'Inserire la cilindrata',
         ];
     }
 }
