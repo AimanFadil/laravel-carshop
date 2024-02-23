@@ -85,8 +85,30 @@
             </div>
         </nav>
 
-        <main class="">
-            @yield('content')
+        <main class="container-fluid vh-100">
+            <div class="row h-100">
+                <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+                    <div class="position-sticky pt-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                {{ Route::currentRouteName() }}
+                                <a href="{{ route('dashboard') }}" class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}">
+                                    <i class="fa-solid fa-tachometer fa-lg fa-fw"></i>
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('admin.car.index') }}" class="nav-link text-white {{ Route::currentRouteName() == 'admin.car.index' ? 'bg-secondary' : '' }}">
+                                    <i class="fa-solid fa-newspaper fa-lg fa-fw"></i>
+                                    Cars List
+                                </a>
+                            </li>
+                        </ul>
+                </nav>
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
+                    @yield('content')
+                </main>
+            </div>
         </main>
     </div>
 </body>
