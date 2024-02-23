@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
+
+use App\Models\Car;
 
 class CarSeeder extends Seeder
 {
@@ -12,8 +15,21 @@ class CarSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+        for ($i = 0; $i < 20; $i++) {
+            $new_car = new Car();
+            $new_car->modello = $faker->streetName();
+            $new_car->prezzo = $faker->numberBetween(10000, 5000000);
+            $new_car->alimentazione = $faker->word();
+            $new_car->anno = $faker->year();
+            $new_car->descrizione = $faker->text();
+            $new_car->numero_telaio = $faker->randomNumber(20, true);
+            $new_car->trazione = $faker->word();
+            $new_car->porte = $faker->numberBetween(3, 5);
+            $new_car->corrozzeria = $faker->word();
+            $new_car->cilindrata = $faker->numberBetween(1000, 5000);
+            $new_car->save();
+        }
     }
 }
