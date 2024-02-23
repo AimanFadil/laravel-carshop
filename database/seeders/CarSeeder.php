@@ -28,6 +28,7 @@ class CarSeeder extends Seeder
             $new_car->trazione = $faker->word();
             $new_car->porte = $faker->numberBetween(3, 5);
             $new_car->corrozzeria = $faker->word();
+            $new_car->cavalli = $faker->numberBetween(60, 500);
             $new_car->cilindrata = $faker->numberBetween(1000, 5000);
             $new_car->save();
         }
