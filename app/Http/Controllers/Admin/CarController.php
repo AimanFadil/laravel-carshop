@@ -19,7 +19,7 @@ class CarController extends Controller
     {
         $cars = Car::all();
 
-        return view('admin.car.index', compact('car'));
+        return view('admin.car.index', compact('cars'));
     }
 
     /**
@@ -85,6 +85,7 @@ class CarController extends Controller
      */
     public function destroy(Car $car)
     {
-        //
+        $car->delete();
+        return redirect()->route('admin.cars.index');
     }
 }
