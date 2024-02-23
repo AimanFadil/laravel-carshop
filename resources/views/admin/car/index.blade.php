@@ -7,7 +7,7 @@
                 <h2 class="fs-4 text-secondary text-uppercase">
                     cars list
                 </h2>
-                <a href="{{ route('admin.cars.create') }}" class="btn btn-sm btn-secondary"><i
+                <a href="{{ route('admin.car.create') }}" class="btn btn-sm btn-secondary"><i
                         class="fa-solid fa-pencil"></i></a>
             </div>
             <div class="col-12">
@@ -41,14 +41,14 @@
                                 <td>{{ $car->cilindrata }}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="{{ route('admin.cars.show', ['car' => $car->id]) }}"
+                                        <a href="{{ route('admin.car.show', ['car' => $car->id]) }}"
                                             class="btn btn-sm btn-primary me-1"><i
                                                 class="fa-solid fa-magnifying-glass"></i></a>
 
-                                        <a href="{{ route('admin.cars.edit', ['car' => $car->id]) }}"
+                                        <a href="{{ route('admin.car.edit', ['car' => $car->id]) }}"
                                             class="btn btn-sm btn-warning me-1"><i class="fa-solid fa-pencil"></i></a>
 
-                                        <form action="{{ route('admin.cars.destroy', ['car' => $car->id]) }}"
+                                        <form action="{{ route('admin.car.destroy', ['car' => $car->id]) }}"
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
