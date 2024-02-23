@@ -6,6 +6,8 @@ use App\Models\Car;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 
+use App\Http\Controllers\Controller;
+
 class CarController extends Controller
 {
     /**
