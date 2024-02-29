@@ -115,8 +115,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#}}"
-                                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.carshouse.index' ? 'bg-secondary' : '' }}">
+                                <a href="{{ route('admin.carshouse.index') }}"
+                                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.carshouses.index' ? 'bg-secondary' : '' }}">
                                     <i class="fa-solid fa-house fa-lg fa-fw"></i>
                                     Cars House
                                 </a>

@@ -25,26 +25,32 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($carshouse as $house)
+                        @foreach ($carshouses as $carshouse)
                             <tr>
-                                <td>{{ $house->name }}</td>
-                                <td>{{ $house->address }}</td>
-                                <td>{{ $house->phone }}</td>
-                                <td>{{ $house->type }}</td>
-                                <td>{{ $house->mail }}</td>
-                                <td>{{ $house->social }}</td>
-                                <td>{{ $house->logo }}</td>
+                                <td>{{ $carshouse->nome }}</td>
+                                <td>{{ $carshouse->indirizzo }}</td>
+                                <td>{{ $carshouse->tel }}</td>
+                                <td>{{ $carshouse->tipologia }}</td>
+                                <td>{{ $carshouse->mail }}</td>
+                                <td>{{ $carshouse->social }}</td>
+                                <td>{{ $carshouse->logo }}</td>
                                 <td>
                                     <div class="d-flex">
-                                        <a href="#" class="btn btn-sm btn-primary me-1"><i class="fa-solid fa-magnifying-glass"></i></a>
+                                        <a href="{{ route('admin.carshouse.show', ['carshouse' => $carshouse->id]) }}"
+                                            class="btn btn-sm btn-primary me-1"><i
+                                                class="fa-solid fa-magnifying-glass"></i></a>
 
-                                        <a href="#" class="btn btn-sm btn-warning me-1"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="{{ route('admin.carshouse.edit', ['carshouse' => $carshouse->id]) }}"
+                                            class="btn btn-sm btn-warning me-1"><i
+                                                class="fa-solid fa-pen-to-square"></i></a>
 
                                         <form action="#" method="POST">
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Vuoi eliminare questo record??')"><i class="fa-solid fa-trash"></i></button>
+                                            <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Vuoi eliminare questo record??')"><i
+                                                    class="fa-solid fa-trash"></i></button>
                                         </form>
 
                                     </div>
