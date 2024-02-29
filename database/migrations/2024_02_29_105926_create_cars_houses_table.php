@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('tel', 20);
             $table->string('tipologia', 30);
             $table->string('mail', 100);
-            $table->text('social');
-            $table->string('logo', 255)->unique();
+            $table->text('social')->nullable();
+            $table->string('logo', 255)->unique()->nullable();
             $table->timestamps();
         });
     }
