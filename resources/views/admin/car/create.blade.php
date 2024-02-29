@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-group">
                         <label for="anno">Anno</label>
-                        <input type="date" name="anno" id="anno" value="{{ old('anno') }}"
+                        <input type="text" name="anno" id="anno" value="{{ old('anno') }}"
                             class="form-control @error('anno') is-invalid @enderror" required>
                         @error('anno')
                             <p class="text-danger fw-bold">{{ $message }}</p>
@@ -59,7 +59,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="numero_telaio">numero_telaio</label>
+                        <label for="numero_telaio">numero telaio</label>
                         <input type="text" name="numero_telaio" id="numero_telaio" value="{{ old('numero_telaio') }}"
                             class="form-control @error('numero_telaio') is-invalid @enderror" required>
                         @error('numero_telaio')

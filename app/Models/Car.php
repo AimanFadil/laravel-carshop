@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Car extends Model
 {
     use HasFactory;
-    public function CarsHouse(){
+
+    public function CarsHouse()
+    {
         return $this->hasOne(CarsHouse::class);
     }
+
+    protected $fillable = ['cars_house_id', 'modello', 'prezzo', 'alimentazione', 'anno', 'numero_telaio', 'descrizione', 'trazione', 'carrozzeria', 'porte', 'cavalli', 'cilindrata'];
 }
