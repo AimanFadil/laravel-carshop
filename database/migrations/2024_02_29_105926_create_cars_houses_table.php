@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('cars_houses', function (Blueprint $table) {
             $table->id();
+            $table->string('nome', 30);
+            $table->string('indirizzo', 70);
+            $table->string('tel', 20);
+            $table->string('tipologia', 30);
+            $table->string('mail', 100);
+            $table->text('social');
+            $table->string('logo', 255)->unique();
             $table->timestamps();
         });
     }
