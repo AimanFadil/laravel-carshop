@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12 d-flex justify-content-between align-items-center">
                 <h2 class="fs-4 text-secondary text-uppercase">
-                    cars house list
+                    Cars House List
                 </h2>
                 <a href="{{ route('admin.carshouse.create') }}" class="btn btn-sm btn-secondary"><i
                         class="fa-solid fa-pencil"></i>
