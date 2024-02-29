@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController as DashboardController;
 use App\Http\Controllers\Admin\CarController as CarController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

@@ -114,6 +114,13 @@
                                     Cars List
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="#}}"
+                                    class="nav-link text-white {{ Route::currentRouteName() == 'admin.carshouse.index' ? 'bg-secondary' : '' }}">
+                                    <i class="fa-solid fa-house fa-lg fa-fw"></i>
+                                    Cars House
+                                </a>
+                            </li>
                         </ul>
                 </nav>
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
