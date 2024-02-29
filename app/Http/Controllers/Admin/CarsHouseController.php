@@ -43,6 +43,7 @@ class CarsHouseController extends Controller
     public function store(StoreCarsHouseRequest $request)
     {
         $form_data = $request->all();
+        /* dd($form_data); */
 
         if ($request->hasFile('logo')) {
             $path = Storage::disk('public',)->put('images', $request->file('logo'));
@@ -50,17 +51,17 @@ class CarsHouseController extends Controller
 
         $house = new CarsHouse();
 
-        $house->name = $form_data['name'];
+        $house->nome = $form_data['nome'];
         $house->logo = $path;
-        $house->address = $form_data['address'];
-        $house->phone = $form_data['phone'];
-        $house->type = $form_data['type'];
+        $house->indirizzo = $form_data['indirizzo'];
+        $house->tel = $form_data['tel'];
+        $house->tipologia = $form_data['tipologia'];
         $house->mail = $form_data['mail'];
         $house->social = $form_data['social'];
 
         $house->save();
 
-        return redirect()->route('admin.carshouse.index', ['carhouse' => $house->id]);
+        return redirect()->route('admin.carshouse.index');
     }
 
     /**
@@ -69,11 +70,11 @@ class CarsHouseController extends Controller
      * @param  \App\Models\CarsHouse  $carsHouse
      * @return \Illuminate\Http\Response
      */
-    public function show(CarsHouse $carsHouse)
+    public function show(CarsHouse $carshouse)
     {
 
 
-        return view('admin.carshouse.show', compact('carsHouse'));
+        return view('admin.carshouse.show', compact('carshouse'));
     }
 
     /**
@@ -82,11 +83,11 @@ class CarsHouseController extends Controller
      * @param  \App\Models\CarsHouse  $carsHouse
      * @return \Illuminate\Http\Response
      */
-    public function edit(CarsHouse $carsHouse)
+    public function edit(CarsHouse $carshouse)
     {
-        $carsHouse = CarsHouse::find($carsHouse->id);
 
-        return view('admin.carshouse.edit', compact('carsHouse'));
+
+        return view('admin.carshouse.edit', compact('carshouse'));
     }
 
     /**
@@ -96,23 +97,23 @@ class CarsHouseController extends Controller
      * @param  \App\Models\CarsHouse  $carsHouse
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCarsHouseRequest $request, CarsHouse $carsHouse)
+    public function update(UpdateCarsHouseRequest $request, CarsHouse $carshouse)
     {
         $form_data = $request->all();
 
-        $carsHouse = CarsHouse::find($carsHouse->id);
+        $carsHouse = CarsHouse::find($carshouse->id);
 
-        $carsHouse->name = $form_data['name'];
-        $carsHouse->address = $form_data['address'];
-        $carsHouse->phone = $form_data['phone'];
-        $carsHouse->type = $form_data['type'];
+        $carsHouse->nome = $form_data['nome'];
+        $carsHouse->indirizzo = $form_data['indirizzo'];
+        $carsHouse->tel = $form_data['tel'];
+        $carsHouse->tipologia = $form_data['tipologia'];
         $carsHouse->mail = $form_data['mail'];
         $carsHouse->social = $form_data['social'];
         $carsHouse->logo = $form_data['logo'];
 
         $carsHouse->save();
 
-        return redirect()->route('admin.carshouse.index', ['carshouse' => $carsHouse->id]);
+        return redirect()->route('admin.carshouse.index');
     }
 
     /**
