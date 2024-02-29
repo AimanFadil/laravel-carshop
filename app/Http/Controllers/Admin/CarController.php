@@ -29,7 +29,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.car.create');
     }
 
     /**
@@ -40,7 +40,14 @@ class CarController extends Controller
      */
     public function store(StoreCarRequest $request)
     {
-        //
+        $form_data = $request->all();
+
+        $car = new Car();
+
+        $car->fill($form_data);
+
+        $car->save();
+        return redirect()->route('admin.cars.index');
     }
 
     /**
@@ -51,7 +58,7 @@ class CarController extends Controller
      */
     public function show(Car $car)
     {
-        //
+        return view('admin.car.show', compact('car'));
     }
 
     /**
@@ -62,7 +69,7 @@ class CarController extends Controller
      */
     public function edit(Car $car)
     {
-        //
+        return view('admin.car.edit', compact('car'));
     }
 
     /**
@@ -74,7 +81,10 @@ class CarController extends Controller
      */
     public function update(UpdateCarRequest $request, Car $car)
     {
-        //
+        $form_data = $request->all();
+
+        $car->update($form_data);
+        return redirect()->route('admin.cars.index');
     }
 
     /**
