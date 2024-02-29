@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\CarsHouse;
 use App\Http\Requests\StoreCarsHouseRequest;
@@ -44,7 +44,7 @@ class CarsHouseController extends Controller
     {
         $form_data = $request->all();
 
-        if($request->hasFile('logo')){
+        if ($request->hasFile('logo')) {
             $path = Storage::disk('public',)->put('images', $request->file('logo'));
         }
 
@@ -71,7 +71,7 @@ class CarsHouseController extends Controller
      */
     public function show(CarsHouse $carsHouse)
     {
-        $carsHouse = CarsHouse::find($carsHouse->id);
+
 
         return view('admin.carshouse.show', compact('carsHouse'));
     }
