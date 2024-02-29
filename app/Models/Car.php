@@ -13,6 +13,9 @@ class Car extends Model
     {
         return $this->hasOne(CarsHouse::class);
     }
+    public function optionals (){
+        return $this->belongsToMany(Optional::class);
+    }
 
     protected $fillable = ['cars_house_id', 'modello', 'prezzo', 'alimentazione', 'anno', 'numero_telaio', 'descrizione', 'trazione', 'carrozzeria', 'porte', 'cavalli', 'cilindrata'];
 }
