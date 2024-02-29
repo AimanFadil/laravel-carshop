@@ -24,7 +24,6 @@ class UpdateCarRequest extends FormRequest
     public function rules()
     {
         return [
-            'casa_automobilistica' => 'required',
             'modello' => 'required|max:30',
             'prezzo' => 'required|min:3',
             'alimentazione' => 'required|max:20',
@@ -40,7 +39,6 @@ class UpdateCarRequest extends FormRequest
     public function messages()
     {
         return [
-            'casa_automobilistica.required' => 'La casa automibilistica è obbligatorria',
             'modello.required' => 'Il modello è obbligatorio',
             'modello.max' => 'Il modello può essere composto da massimo 30 caratteri',
             'prezzo.required' => 'Il prezzo è obbligatorio',
