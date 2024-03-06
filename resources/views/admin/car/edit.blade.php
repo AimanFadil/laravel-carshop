@@ -126,6 +126,19 @@
                             <p class="text-danger fw-bold">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div class="form-group my-3">
+                        <label class="control-label">Selziona optionals</label>
+                        <div>
+                            @foreach ($optionals as $optional)
+                                <div class="form-check-inline">
+                                    <input type="checkbox" name="optionals[]" id="optional-{{ $optional->id }}"
+                                        class="form-check-input" value="{{ $optional->id }}"
+                                        @checked(is_array(old('optionals')) && in_array($optional->id, old('optionals')))>
+                                    <label for="" class="form-check-label">{{ $optional->name }}</label>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
                     <div class="form-group">
                         @if ($car->image != null)
                             <div>
