@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Car;
+use App\Models\CarsHouse;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 
@@ -29,7 +31,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('admin.car.create');
+        $carsHouse = CarsHouse::all();
+        return view('admin.car.create', compact('carsHouse'));
     }
 
     /**
@@ -43,6 +46,11 @@ class CarController extends Controller
         $form_data = $request->all();
 
         $car = new Car();
+
+        if($request->hasFile('image')){
+            $path=Storage::disk('public')->put('post_image',$form_data['image']);
+            $form_data['image']=$path;
+        }
 
         $car->fill($form_data);
 
@@ -68,8 +76,9 @@ class CarController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Car $car)
-    {
-        return view('admin.car.edit', compact('car'));
+    {   
+        $carsHouse = CarsHouse::all();
+        return view('admin.car.edit', compact('car','carsHouse'));
     }
 
     /**

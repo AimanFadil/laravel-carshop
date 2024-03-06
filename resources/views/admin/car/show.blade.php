@@ -37,6 +37,9 @@
                     <h3>CILINDRATA: {{ $car['cilindrata'] }}</h3>
                 </li>
             </ul>
-
+            <div>
+                <img class="w-100"src="{{ $car->image !== null ? asset('/storage/' . $car->image) : '/storage/image/imgnull.jpg' }}"
+                    alt="">
+            </div>
     </div>
 @endsection

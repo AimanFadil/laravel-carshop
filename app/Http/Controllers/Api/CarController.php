@@ -17,9 +17,9 @@ class CarController extends Controller
         ]);
     }
 
-    public function show($slug)
+    public function show($id)
     {
-        $car=Car::all()->where('slug', $slug)->first();
+        $car=Car::all()->where('id', $id)->first();
 
         return response()->json([
             "success" => true,
