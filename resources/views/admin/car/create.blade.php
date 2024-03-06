@@ -16,8 +16,21 @@
                 </div>
             @endif
             <div class="col-12">
-                <form action="{{ route('admin.cars.store') }}" method="post">
+                <form action="{{ route('admin.cars.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <div class="form-group">
+                        <label for="cars_house_id">Selziona casa automobilistica</label>
+                        <select name="cars_house_id" id="cars_house_id"
+                            class="form-select @error('cars_house_id') is-invalid @enderror" required>
+                            <option value="">Casa automobilistica</option>
+                            @foreach ($carsHouse as $carHouse)
+                                <option value="{{ $carHouse->id }}">{{ $carHouse->nome }}</option>
+                            @endforeach
+                            @error('cars_house_id')
+                                <p class="text-danger fw-bold">{{ $message }}</p>
+                            @enderror
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="modello">Modello</label>
                         <input type="text" name="modello" id="modello" value="{{ old('modello') }}"
@@ -103,6 +116,14 @@
                         <input type="text" name="cilindrata" id="cilindrata" value="{{ old('cilindrata') }}"
                             class="form-control @error('cilindrata') is-invalid @enderror" required>
                         @error('cilindrata')
+                            <p class="text-danger fw-bold">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="image">immagine</label>
+                        <input type="file" name="image" id="image"
+                            class="form-control @error('image') is-invalid @enderror" required>
+                        @error('image')
                             <p class="text-danger fw-bold">{{ $message }}</p>
                         @enderror
                     </div>

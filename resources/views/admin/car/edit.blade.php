@@ -16,9 +16,23 @@
                 </div>
             @endif
             <div class="col-12">
-                <form action="{{ route('admin.cars.update', $car) }}" method="post">
+                <form action="{{ route('admin.cars.update', $car) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    <div class="form-group">
+                        <label for="cars_house_id">Selziona casa automobilistica</label>
+                        <select name="cars_house_id" id="cars_house_id"
+                            class="form-select @error('cars_house_id') is-invalid @enderror" required>
+                            <option value="">Casa automobilistica</option>
+                            @foreach ($carsHouse as $carHouse)
+                                <option value="{{ $carHouse->id }} @selected($carHouse->id == old('cars_house_id', $car->carHouse ? $car->carHouse->id : ''))">{{ $carHouse->nome }}
+                                </option>
+                            @endforeach
+                            @error('cars_house_id')
+                                <p class="text-danger fw-bold">{{ $message }}</p>
+                            @enderror
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="modello">Modello</label>
                         <input type="text" name="modello" id="modello" value="{{ old('modello') ?? $car->modello }}"
@@ -112,6 +126,23 @@
                             <p class="text-danger fw-bold">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        @if ($car->image != null)
+                            <div>
+                                <img src="{{ asset('/storage/' . $car->image) }}" alt="">
+                            </div>
+                        @else
+                            <h4>Immagine non presente</h4>
+                        @endif
+
+                        <label for="image">immagine</label>
+                        <input type="file" name="image" id="image"
+                            class="form-control @error('image') is-invalid @enderror" required>
+                        @error('image')
+                            <p class="text-danger fw-bold">{{ $message }}</p>
+                        @enderror
+                    </div>
+
                     <div>
                         <button type="submit" class="btn btn-primary my-3">SALVA</button>
                     </div>
