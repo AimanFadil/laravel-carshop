@@ -6,18 +6,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>Sei sicuro di voler cancellare { $car->modello }?</p>
+                <p id='text_delete'></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <form action="{{ route('admin.cars.destroy', ['car' => $car->id]) }}" method="POST">
+
+                <form action="" method="POST" id="form_delete">
                     @csrf
                     @method('DELETE')
 
-                    <button type="submit" class="btn btn-sm btn-danger btn_delete" data-postid="{{ $car->id }}"
-                        onclick="return confirm('Vuoi eliminare questo record??')"><i
-                            class="fa-solid fa-trash"></i></button>
+                    <button type="submit" class="btn btn-sm btn-danger">elimina</button>
                 </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

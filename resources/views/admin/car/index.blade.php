@@ -48,15 +48,12 @@
                                         <a href="{{ route('admin.cars.edit', ['car' => $car->id]) }}"
                                             class="btn btn-sm btn-warning me-1"><i class="fa-solid fa-pencil"></i></a>
 
-                                        <form action="{{ route('admin.cars.destroy', ['car' => $car->id]) }}"
-                                            method="POST">
-                                            @csrf
-                                            @method('DELETE')
+                                        <button type="button" class="btn_delete btn btn-sm btn-danger"
+                                            data-bs-toggle="modal" data-bs-target="#modal_delete"
+                                            data-carid="{{ $car->id }}" data-carname="{{ $car->modello }}">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
 
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Vuoi eliminare questo record??')"><i
-                                                    class="fa-solid fa-trash"></i></button>
-                                        </form>
 
                                     </div>
                                 </td>
@@ -67,4 +64,5 @@
             </div>
         </div>
     </div>
+    @include('admin.car.modal_delete')
 @endsection
