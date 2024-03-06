@@ -11,7 +11,7 @@ class Car extends Model
 
     public function CarsHouse()
     {
-        return $this->hasOne(CarsHouse::class);
+        return $this->hasMany(CarsHouse::class);
     }
     public function optionals()
     {
