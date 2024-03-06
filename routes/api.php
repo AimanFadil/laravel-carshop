@@ -25,7 +25,7 @@ use App\Http\Controllers\Api\OptionalController as OptionalController;
 Route::get('/car', [CarController::class, 'index']);
 Route::get('/car/{id}', [CarController::class, 'show']);
 Route::get('/carhouse', [CarHousesController::class, 'index']);
-
+Route::get('/car/carhouse/{id}', [CarController::class, 'showCarsOfHouseCars']);
 Route::get('/optional', [OptionalController::class, 'index']);
 
 
