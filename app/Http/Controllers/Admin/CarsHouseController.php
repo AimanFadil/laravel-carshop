@@ -46,7 +46,7 @@ class CarsHouseController extends Controller
         /* dd($form_data); */
 
         if ($request->hasFile('logo')) {
-            $path = Storage::disk('public',)->put('images', $request->file('logo'));
+            $path = Storage::disk('public')->put('images', $request->file('logo'));
         }
 
         $house = new CarsHouse();
@@ -103,13 +103,25 @@ class CarsHouseController extends Controller
 
         $carsHouse = CarsHouse::find($carshouse->id);
 
+        if ($request->hasFile('logo')) {
+
+            if ($carsHouse->logo != null) {
+                Storage::disk('public')->delete($carsHouse->logo);
+            }
+            $path = Storage::disk('public')->put('carsHouse', $form_data['logo']);
+            $form_data['logo'] = $path;
+            $carsHouse->logo = $form_data['logo'];
+        } else {
+            $carsHouse->logo = null;
+        };
+
         $carsHouse->nome = $form_data['nome'];
         $carsHouse->indirizzo = $form_data['indirizzo'];
         $carsHouse->tel = $form_data['tel'];
         $carsHouse->tipologia = $form_data['tipologia'];
         $carsHouse->mail = $form_data['mail'];
         $carsHouse->social = $form_data['social'];
-        $carsHouse->logo = $form_data['logo'];
+
 
         $carsHouse->save();
 
