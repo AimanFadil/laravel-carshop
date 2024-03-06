@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Car;
 use App\Models\CarsHouse;
+use App\Models\Optional;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
-
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class CarController extends Controller
@@ -32,7 +33,8 @@ class CarController extends Controller
     public function create()
     {
         $carsHouse = CarsHouse::all();
-        return view('admin.car.create', compact('carsHouse'));
+        $optionals = Optional::all();
+        return view('admin.car.create', compact('carsHouse','optionals'));
     }
 
     /**
@@ -55,6 +57,12 @@ class CarController extends Controller
         $car->fill($form_data);
 
         $car->save();
+
+        if($request->has('optionals')){
+            $car->optionals()->attach($form_data['optionals']);
+        }
+
+
         return redirect()->route('admin.cars.index');
     }
 
@@ -78,7 +86,8 @@ class CarController extends Controller
     public function edit(Car $car)
     {   
         $carsHouse = CarsHouse::all();
-        return view('admin.car.edit', compact('car','carsHouse'));
+        $optionals = optional::all();
+        return view('admin.car.edit', compact('car','carsHouse','optionals'));
     }
 
     /**
@@ -92,7 +101,21 @@ class CarController extends Controller
     {
         $form_data = $request->all();
 
+        if($request->hasFile('image')){
+
+            if($car->image != null){
+                Storage::delete($project->image);
+            }
+
+            $path=Storage::disk('public')->put('post_image',$form_data['image']);
+            $form_data['image']=$path;
+        }
+
         $car->update($form_data);
+
+        if($request->has('optionals')){
+            $car->optionals()->sync($form_data['optionals']);
+        }
         return redirect()->route('admin.cars.index');
     }
 
