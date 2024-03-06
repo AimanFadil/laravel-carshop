@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -9,7 +10,7 @@ class CarController extends Controller
 {
     public function index()
     {
-        $cars=Car::all();
+        $cars = Car::all();
 
         return response()->json([
             "success" => true,
@@ -19,7 +20,7 @@ class CarController extends Controller
 
     public function show($slug)
     {
-        $car=Car::all()->where('slug', $slug)->first();
+        $car = Car::all()->where('slug', $slug)->first();
 
         return response()->json([
             "success" => true,
