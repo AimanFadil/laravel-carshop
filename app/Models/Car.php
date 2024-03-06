@@ -13,7 +13,8 @@ class Car extends Model
     {
         return $this->hasOne(CarsHouse::class);
     }
-    public function optionals (){
+    public function optionals()
+    {
         return $this->belongsToMany(Optional::class);
     }
 
