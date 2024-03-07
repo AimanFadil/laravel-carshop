@@ -3,14 +3,17 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-12 d-flex justify-content-between align-items-center">
+            <div class="col-12 d-flex flex-column m-2">
                 <h2 class="fs-4 text-secondary text-uppercase">
                     cars list
                 </h2>
-                <a href="{{ route('admin.cars.create') }}" class="btn btn-sm btn-secondary"><i
-                        class="fa-solid fa-pencil"></i></a>
+                <div class="d-flex">
+                    <h2 class="fs-4 text-secondary text-uppercase">AGGIUNGI NUOVA AUTOMOBILE</h2>
+                    <a href="{{ route('admin.cars.create') }}" class="btn btn-sm btn-secondary mx-2 my-1 py-2"><i
+                            class="fa-solid fa-pencil"></i></a>
+                </div>
             </div>
-            <div class="col-12">
+            <div class="col-12 ">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -24,6 +27,7 @@
                             <th>Porte</th>
                             <th>Carrozzeria</th>
                             <th>Cilindrata</th>
+                            <th>Tools</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -33,7 +37,7 @@
                                 <td>€{{ number_format($car->prezzo, 2) }}</td>
                                 <td>{{ $car->alimentazione }}</td>
                                 <td>{{ $car->anno }}</td>
-                                <td>{{ $car->descrizione }}</td>
+                                <td>{{ substr($car->descrizione, 0, 10) }}...</td>
                                 <td>{{ $car->numero_telaio }}</td>
                                 <td>{{ $car->trazione }}</td>
                                 <td>{{ $car->porte }}</td>
