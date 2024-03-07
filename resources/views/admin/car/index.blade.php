@@ -30,7 +30,7 @@
                         @foreach ($cars as $car)
                             <tr>
                                 <td>{{ $car->modello }}</td>
-                                <td>{{ $car->prezzo }}</td>
+                                <td>€{{ number_format($car->prezzo, 2) }}</td>
                                 <td>{{ $car->alimentazione }}</td>
                                 <td>{{ $car->anno }}</td>
                                 <td>{{ $car->descrizione }}</td>
@@ -50,7 +50,8 @@
 
                                         <button type="button" class="btn_delete btn btn-sm btn-danger"
                                             data-bs-toggle="modal" data-bs-target="#modal_delete"
-                                            data-carid="{{ $car->id }}" data-carname="{{ $car->modello }}">
+                                            data-carid="{{ $car->id }}" data-carname="{{ $car->modello }}"
+                                            data-type="cars">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
 
