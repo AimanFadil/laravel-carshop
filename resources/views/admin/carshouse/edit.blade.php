@@ -85,7 +85,7 @@
                     <div>
                         <label for="logo">Aggiungi il logo</label>
                         <input type="file" name="logo" id="logo"
-                            class="form-control @error('logo') is-invalid @enderror" required>
+                            class="form-control @error('logo') is-invalid @enderror">
 
                         @error('logo')
                             <div class="alert alert-danger">{{ $message }}</div>

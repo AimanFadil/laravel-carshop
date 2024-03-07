@@ -27,4 +27,13 @@ class CarController extends Controller
             "results" => $car
         ]);
     }
+    public function showCarsOfHouseCars($id)
+    {
+        $car = Car::all()->where('cars_house_id', $id);
+
+        return response()->json([
+            "success" => true,
+            "results" => $car
+        ]);
+    }
 }

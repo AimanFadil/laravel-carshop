@@ -136,7 +136,7 @@
                     <div class="form-group">
                         <label for="image">immagine</label>
                         <input type="file" name="image" id="image"
-                            class="form-control @error('image') is-invalid @enderror" required>
+                            class="form-control @error('image') is-invalid @enderror">
                         @error('image')
                             <p class="text-danger fw-bold">{{ $message }}</p>
                         @enderror
