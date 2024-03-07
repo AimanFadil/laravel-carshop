@@ -49,6 +49,10 @@ class CarsHouseController extends Controller
             $path = Storage::disk('public')->put('images', $request->file('logo'));
         }
 
+        else {
+            $path=null;
+        }
+
         $house = new CarsHouse();
 
         $house->nome = $form_data['nome'];
