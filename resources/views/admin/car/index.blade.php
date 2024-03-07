@@ -50,7 +50,8 @@
 
                                         <button type="button" class="btn_delete btn btn-sm btn-danger"
                                             data-bs-toggle="modal" data-bs-target="#modal_delete"
-                                            data-carid="{{ $car->id }}" data-carname="{{ $car->modello }}">
+                                            data-carid="{{ $car->id }}" data-carname="{{ $car->modello }}"
+                                            data-type="cars">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
 

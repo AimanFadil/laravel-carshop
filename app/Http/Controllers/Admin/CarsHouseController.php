@@ -134,8 +134,9 @@ class CarsHouseController extends Controller
      * @param  \App\Models\CarsHouse  $carsHouse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CarsHouse $carsHouse)
+    public function destroy(CarsHouse $carshouse)
     {
-        //
+        $carshouse->delete();
+        return redirect()->route('admin.carshouse.index');
     }
 }

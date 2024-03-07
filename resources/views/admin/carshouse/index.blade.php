@@ -44,14 +44,12 @@
                                             class="btn btn-sm btn-warning me-1"><i
                                                 class="fa-solid fa-pen-to-square"></i></a>
 
-                                        <form action="#" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Vuoi eliminare questo record??')"><i
-                                                    class="fa-solid fa-trash"></i></button>
-                                        </form>
+                                        <button type="button" class="btn_delete btn btn-sm btn-danger"
+                                            data-bs-toggle="modal" data-bs-target="#modal_delete"
+                                            data-carid="{{ $carshouse->id }}" data-carname="{{ $carshouse->nome }}"
+                                            data-type="carshouse">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
 
                                     </div>
                                 </td>
@@ -62,4 +60,5 @@
             </div>
         </div>
     </div>
+    @include('admin.car.modal_delete')
 @endsection
