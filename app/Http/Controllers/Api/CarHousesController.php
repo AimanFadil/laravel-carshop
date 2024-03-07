@@ -12,6 +12,10 @@ class CarHousesController extends Controller
     {
         $carHouse = CarsHouse::all();
 
+        foreach($carHouse as $house){
+            $house['slug'] = Str::slug($house->name, '-');
+        }
+
         return response()->json([
             "success" => true,
             "results" => $carHouse
