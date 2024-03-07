@@ -30,7 +30,7 @@
                         @foreach ($cars as $car)
                             <tr>
                                 <td>{{ $car->modello }}</td>
-                                <td>{{ $car->prezzo }}</td>
+                                <td>€{{ number_format($car->prezzo, 2) }}</td>
                                 <td>{{ $car->alimentazione }}</td>
                                 <td>{{ $car->anno }}</td>
                                 <td>{{ $car->descrizione }}</td>
